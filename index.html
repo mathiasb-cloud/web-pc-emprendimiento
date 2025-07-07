@@ -1,0 +1,1334 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+
+  <title>Apoyo Psicológico</title>
+  <style>
+    @font-face {
+      font-family: 'Acorn';
+      src: url('./fonts/Acorn-Bold.woff2') format('woff2'),
+           url('./fonts/Acorn-Bold.woff') format('woff');
+    }
+    @font-face {
+      font-family: 'GT America';
+      src: url('./fonts/GT-America-Compressed-Black-Trial.otf') format('opentype');
+      font-weight: 900;
+      font-style: normal;
+    }
+
+    :root {
+      --titleFont: 'Acorn', sans-serif;
+      --bodyFont: 'GT America', sans-serif;
+    }
+
+    body {
+      margin: 0;
+      font-family: var(--bodyFont);
+      background: linear-gradient(180deg, #d5efdd 0%, #f3e8d5 40%, #f3e8d5 100%);
+      color: #1e1e1e;
+      overflow-x: hidden;
+    }
+
+    header {
+      padding: 140px 20px 60px;
+      text-align: center;
+      position: relative;
+    }
+
+    header h1, header h2 {
+      font-size: 7vw;
+      font-family: var(--titleFont);
+      color: #065f46;
+      margin: 0;
+    }
+
+    header p {
+      font-size: 1.2em;
+      color: #475569;
+      max-width: 700px;
+      margin: 30px auto 0;
+    }
+    .titulo1 {
+  font-family: var(--titleFont);
+  font-size: 2.5em;
+  text-align: center;
+  color: #065f46;
+  margin-bottom: 20px;
+}
+
+    .star {
+      position: absolute;
+      width: 100px;
+      height: 100px;
+    }
+    .star1 { top: 20%; left: 10%; }
+    .star2 { top: 30%; right: 10%; }
+
+    .logo {
+      position: absolute;
+      top: 30px;
+      left: 30px;
+      height: 60px;
+      width: auto;
+      mix-blend-mode: multiply;
+    }
+
+    .grid {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 40px;
+      padding: 60px 40px;
+    }
+
+    .card {
+      background: white;
+      border-radius: 65px;
+      overflow: hidden;
+      box-shadow: 0 12px 24px rgba(0,0,0,0.05);
+      transition: transform 0.3s, box-shadow 0.3s;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .card:hover {
+      transform: translateY(-10px);
+      box-shadow: 20px 60px 60px rgba(0,0,0,0.2);
+    }
+
+    .card img {
+      width: 100%;
+      height: 400px;
+      object-fit: cover;
+      display: block;
+    }
+
+    .card .content {
+      padding: 28px;
+    }
+
+    .card h2 {
+      margin: 0 0 12px;
+      font-size: 1.6em;
+      color: #0f172a;
+      font-family: var(--titleFont);
+    }
+
+    .card p {
+      margin: 0;
+      font-size: 1em;
+      color: #475569;
+    }
+
+    .card.wide {
+      width: 800px;
+    }
+
+    .card.narrow {
+      width: 400px;
+    }
+
+    footer {
+      text-align: center;
+      padding: 60px 20px;
+      color: #475569;
+      font-size: 0.9em;
+    }
+
+    @media (max-width: 1200px) {
+      .card {
+        width: 100% !important;
+        max-width: 100%;
+      }
+    }
+    .info-section {
+  padding: 80px 40px;
+  background: transparent;
+  text-align: center;
+}
+
+.info-section h2 {
+  font-size: 2.8em;
+  color: #065f46;
+  font-family: var(--titleFont);
+  margin-bottom: 40px;
+}
+
+.info-content {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 40px;
+}
+
+.info-item {
+  background: white;
+  border-radius: 30px;
+  padding: 30px;
+  max-width: 350px;
+  flex: 1 1 300px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.06);
+  transition: transform 0.3s ease;
+}
+
+.info-item:hover {
+  transform: translateY(-8px);
+}
+
+.info-item h3 {
+  font-size: 1.4em;
+  color: #0f172a;
+  font-family: var(--titleFont);
+  margin-bottom: 10px;
+}
+
+.info-item p {
+  font-size: 1em;
+  color: #475569;
+}
+
+.causas-section {
+  padding: 80px 20px;
+  text-align: center;
+}
+
+.causas-section h2 {
+  font-family: var(--titleFont);
+  font-size: 2.5em;
+  color: #065f46;
+  margin-bottom: 40px;
+}
+
+.causas-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 40px;
+}
+
+.card-causa {
+  position: relative;
+  width: 400px;
+  height: 300px;
+  border-radius: 32px;
+  overflow: hidden;
+  perspective: 1000px;
+  background-color: #f2f2f2;
+  box-shadow: 0 0 0 5px #ffffff80;
+  transition: transform 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.card-causa img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s ease;
+}
+
+.card-causa:hover {
+  transform: scale(1.05);
+  box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+}
+
+.card-causa .card__content {
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: #f2f2f2;
+  width: 100%;
+  height: 100%;
+  padding: 20px;
+  box-sizing: border-box;
+  transform: rotateX(-90deg);
+  transform-origin: bottom;
+  transition: transform 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.card-causa:hover img {
+  transform: scale(0);
+}
+
+.card-causa:hover .card__content {
+  transform: rotateX(0deg);
+}
+
+.card__title {
+  margin: 0;
+  font-size: 28px;
+  color: #333;
+  font-weight: 700;
+}
+
+.card__description {
+  margin-top: 10px;
+  font-size: 20px;
+  color: #555;
+  line-height: 1.4;
+  text-align: center;
+}
+
+
+
+
+.consecuencias-wrapper {
+  margin: 100px auto;
+  padding: 40px;
+  max-width: 1300px;
+}
+
+.consecuencias-title {
+  font-family: var(--titleFont);
+  font-size: 2.5em;
+  text-align: center;
+  color: #065f46;
+  margin-bottom: 40px;
+}
+
+.consecuencias-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.consecuencias-cards {
+  display: grid;
+  grid-template-columns: 220px 220px;
+  grid-template-rows: 220px 460px;
+  grid-template-areas: "a b" "c b";
+  gap: 20px;
+  flex: 1;
+  min-width: 460px;
+}
+
+.consecuencia-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  padding: 20px;
+  border-radius: 20px;
+  color: rgb(41, 39, 39);
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+.consecuencia-card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+.consecuencia-card p {
+  margin: 8px 0;
+}
+
+.consecuencia-tip {
+  font-size: 1.5em;
+  font-weight: 700;
+}
+
+.consecuencia-text {
+  font-size: 1.4em;
+}
+
+.consecuencia-red {
+  background-color: #67aaf7;
+  grid-area: a;
+}
+
+.consecuencia-blue {
+  background-color: #dda36c;
+  grid-area: b;
+}
+
+.consecuencia-green {
+  background-color: #bc8acf;
+  grid-area: c;
+}
+
+.spotify-section {
+  flex: 1;
+  min-width: 300px;
+  max-width: 500px;  
+}
+
+.spotify-section,
+.song,
+.artist,
+.heading {
+  font-family: 'Roboto', sans-serif;
+}
+
+
+
+
+
+
+
+
+
+/* From Uiverse.io by Praashoo7 */ 
+.main {
+  background-color: white;
+  padding: 1em;
+  padding-bottom: 1.1em;
+  border-radius: 32px;
+  margin: 1em;
+}
+
+.loader {
+  display: flex;
+  flex-direction: row;
+  height: 6em;
+  padding-left: 1em;
+  padding-right: 1em;
+  transform: rotate(180deg);
+  justify-content: right;
+  border-radius: 10px;
+  transition: .4s ease-in-out;
+}
+
+.loader:hover {
+  cursor: pointer;
+  background-color: lightgray;
+}
+
+.currentplaying {
+  display: flex;
+  margin: 1em;
+}
+
+.spotify {
+  width: 50px;
+  height: 50px;
+  margin-right: 0.6em;
+}
+
+.heading {
+  color: black;
+  font-size: 1.1em;
+  font-weight: bold;
+  align-self: center;
+}
+
+.loading {
+  display: flex;
+  margin-top: 1em;
+  margin-left: 0.3em;
+}
+
+.load {
+  width: 2px;
+  height: 33px;
+  background-color: limegreen;
+  animation: 1s move6 infinite;
+  border-radius: 5px;
+  margin: 0.1em;
+  margin-top: 15px;
+}
+
+.load:nth-child(1) {
+  animation-delay: 0.2s;
+}
+
+.load:nth-child(2) {
+  animation-delay: 0.4s;
+}
+
+.load:nth-child(3) {
+  animation-delay: 0.6s;
+}
+
+.play {
+  position: relative;
+  left: 0.35em;
+  height: 1.6em;
+  width: 1.6em;
+  clip-path: polygon(50% 50%, 100% 50%, 75% 6.6%);
+  background-color: black;
+  transform: rotate(-90deg);
+  align-self: center;
+  margin-top: 0.7em;
+  justify-self: center;
+}
+
+.albumcover {
+  position: relative;
+  margin-right: 1em;
+  height: 40px;
+  width: 40px;
+  background-color: rgb(233, 232, 232);
+  align-self: center;
+  border-radius: 5px;
+  transform: rotate(180deg);
+}
+
+.song {
+  position: relative;
+  transform: rotate(180deg);
+  margin-right: 1em;
+  color: black;
+  align-self: center;
+}
+
+.artist {
+  font-size: 0.8em;
+}
+
+@keyframes move6 {
+  0% {
+    height: 0.2em;
+  }
+
+  25% {
+    height: 0.7em;
+  }
+
+  50% {
+    height: 1.5em;
+  }
+
+  100% {
+    height: 0.2em;
+  }
+}
+
+
+
+
+
+/* From Uiverse.io by rmdhnkhsn */ 
+.card1 {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 28px;
+  max-width: 340px;
+  border-radius: 30px;
+  background: #fff;
+  box-shadow: 0px 0px 14px 0px rgba(192, 192, 192, 0.2);
+  transition: 1s all;
+  overflow: hidden;
+  margin-left: 15px;
+}
+.card1::after {
+  content: "";
+  position: absolute;
+  bottom: -30%;
+  right: -30%;
+  width: 120px;
+  height: 120px;
+  background: #23c55e;
+  filter: blur(70px);
+  border-radius: 50%;
+  transition: width 1s, height 1s;
+}
+.card1::before {
+  content: "";
+  position: absolute;
+  bottom: -160%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 0;
+  height: 0;
+  background: #23c55e;
+  filter: blur(70px);
+  border-radius: 50%;
+  transition: width 1s, height 1s;
+}
+.card1:hover::before {
+  bottom: -230%;
+  width: 1000px;
+  height: 1000px;
+  filter: blur(1px);
+}
+.containers1 {
+  position: relative;
+}
+.icon1 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 56px;
+  height: 56px;
+  border-radius: 6px;
+  background: #e5f6eb;
+}
+.card1:hover .icon {
+  background: #23c55e;
+  transition: 1s all;
+}
+.card1:hover .icon1 svg,
+.card1:hover .linkMore svg {
+  filter: brightness(0) invert(1);
+  transition: 1s all;
+}
+.title1 {
+  color: #171d29;
+  font-size: 26px;
+  font-style: normal;
+  font-weight: 500;
+  white-space: nowrap;
+  transition: 1s all;
+  margin: 1rem 0;
+}
+.subtitle1 {
+  color: #7e8882;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 22px;
+  transition: 1s all;
+}
+.linkMore1 {
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  gap: 0.8rem;
+  color: #072713;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 22px;
+  text-decoration: none;
+  transition: 1s all;
+  margin-top: 1rem;
+}
+.card1:hover .title1,
+.card1:hover .subtitle1,
+.card1:hover .linkMore {
+  color: #fff;
+  transition: 1s all;
+}
+
+
+
+
+
+
+
+
+
+
+.ayuda-section {
+  padding: 80px 40px;
+  background-color: #fff;
+  border-top: 3px solid #d4d4d4;
+  color: #1e293b;
+  font-family: var(--bodyFont);
+  text-align: center;
+}
+
+.ayuda-section h2 {
+  font-size: 2.8em;
+  font-family: var(--titleFont);
+  color: #065f46;
+  margin-bottom: 30px;
+}
+
+.ayuda-section p {
+  font-size: 1.1em;
+  line-height: 1.8;
+  max-width: 900px;
+  margin: 0 auto 20px;
+  color: #334155;
+}
+
+.ayuda-contacto {
+  margin-top: 30px;
+  text-align: left;
+  max-width: 900px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.ayuda-contacto h3 {
+  font-size: 1.3em;
+  color: #065f46;
+  margin-top: 20px;
+}
+
+.ayuda-contacto span {
+  font-weight: bold;
+  color: #0f172a;
+}
+
+.hovercard-section {
+  background-color: #fffefc;
+  padding: 80px 20px;
+  text-align: center;
+}
+
+.hovercard-title {
+  font-size: 2.5em;
+  font-family: var(--titleFont);
+  color: #065f46;
+  margin-bottom: 40px;
+}
+
+.hovercard {
+  display: flex;
+  gap: 6px;
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 0.4em;
+  border-radius: 8px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.hovercard p {
+  height: 320px;
+  flex: 1;
+  overflow: hidden;
+  cursor: pointer;
+  border-radius: 18px;
+  transition: all 1.0s ease;
+  background: #eeebe6;
+  border: 2px solid #52907e;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  padding: 0.5em;
+}
+
+.hovercard p:hover {
+  flex: 3;
+}
+
+.hovercard p span {
+  min-width: 14em;
+  padding: 0.5em;
+  text-align: center;
+  transform: rotate(-90deg);
+  transition: all 0.5s ease;
+  text-transform: none;
+  color: #065f46;
+  letter-spacing: 0.05em;
+  font-size: 1em;
+  line-height: 1.4;
+  font-family: var(--bodyFont);
+}
+
+.hovercard-info {
+  transform: rotate(0deg);
+  display: none;
+}
+
+.hovercard p:hover span {
+  transform: rotate(0deg);
+}
+
+.hovercard p:hover .hovercard-info {
+  display: inline;
+}
+
+.hovercard p:hover span:first-child {
+  display: block;
+  margin-bottom: 0.5rem;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .hovercard {
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .hovercard p {
+    height: auto;
+  }
+
+  .hovercard p span {
+    transform: rotate(0deg);
+  }
+
+  .hovercard-info {
+    display: inline;
+  }
+}
+
+
+
+
+
+
+
+.form-section {
+    padding: 40px 20px;
+    background: #fefcf5;
+    color: #14452f;
+    font-family: 'Segoe UI', sans-serif;
+    text-align: center;
+  }
+
+  .form-section h2 {
+    font-size: 2rem;
+    margin-bottom: 30px;
+    color: #0d5c4d;
+    animation: fadeInDown 1s ease-out;
+  }
+
+  .form-group {
+    margin-bottom: 25px;
+    animation: floatIn 0.8s ease-in-out;
+  }
+
+  label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+
+  select {
+    width: 90%;
+    max-width: 400px;
+    padding: 10px;
+    border: 2px solid #0d5c4d;
+    border-radius: 16px;
+    font-size: 1rem;
+    background-color: #ffffff;
+  }
+
+  button {
+    padding: 12px 25px;
+    background: linear-gradient(to right, #0d5c4d, #20b486);
+    color: white;
+    font-weight: bold;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+    margin-top: 20px;
+  }
+
+  button:hover {
+    transform: scale(1.05);
+  }
+
+  .resultado {
+    margin-top: 30px;
+    font-size: 1.1rem;
+    font-weight: 500;
+    background-color: #e9fff3;
+    padding: 20px;
+    border: 2px dashed #0d5c4d;
+    border-radius: 10px;
+    width: 90%;
+    max-width: 500px;
+    margin-inline: auto;
+  }
+
+  .oculto {
+    display: none;
+  }
+
+  /* Animations */
+  @keyframes floatIn {
+    from {
+      transform: translateY(30px);
+      opacity: 0;
+    }
+    to {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+
+  @keyframes fadeInDown {
+    from {
+      transform: translateY(-20px);
+      opacity: 0;
+    }
+    to {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+
+  /* Responsive */
+  @media (max-width: 480px) {
+    select {
+      font-size: 0.9rem;
+    }
+
+    .form-section h2 {
+      font-size: 1.5rem;
+    }
+
+    button {
+      width: 80%;
+    }
+  }
+
+
+/* Loader animado - basado en Uiverse.io by SchawnnahJ */
+.loader-spinner {
+  position: relative;
+  width: 2.5em;
+  height: 2.5em;
+  transform: rotate(165deg);
+  margin: 20px auto;
+}
+
+.loader-spinner:before,
+.loader-spinner:after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  display: block;
+  width: 0.5em;
+  height: 0.5em;
+  border-radius: 0.25em;
+  transform: translate(-50%, -50%);
+}
+
+.loader-spinner:before {
+  animation: loaderBefore 2s infinite;
+}
+
+.loader-spinner:after {
+  animation: loaderAfter 2s infinite;
+}
+
+@keyframes loaderBefore {
+  0% {
+    width: 0.5em;
+    box-shadow: 1em -0.5em rgba(225, 20, 98, 0.75),
+                -1em 0.5em rgba(111, 202, 220, 0.75);
+  }
+  35% {
+    width: 2.5em;
+    box-shadow: 0 -0.5em rgba(225, 20, 98, 0.75),
+                0 0.5em rgba(111, 202, 220, 0.75);
+  }
+  70% {
+    width: 0.5em;
+    box-shadow: -1em -0.5em rgba(225, 20, 98, 0.75),
+                1em 0.5em rgba(111, 202, 220, 0.75);
+  }
+  100% {
+    box-shadow: 1em -0.5em rgba(225, 20, 98, 0.75),
+                -1em 0.5em rgba(111, 202, 220, 0.75);
+  }
+}
+
+@keyframes loaderAfter {
+  0% {
+    height: 0.5em;
+    box-shadow: 0.5em 1em rgba(61, 184, 143, 0.75),
+                -0.5em -1em rgba(233, 169, 32, 0.75);
+  }
+  35% {
+    height: 2.5em;
+    box-shadow: 0.5em 0 rgba(61, 184, 143, 0.75),
+                -0.5em 0 rgba(233, 169, 32, 0.75);
+  }
+  70% {
+    height: 0.5em;
+    box-shadow: 0.5em -1em rgba(61, 184, 143, 0.75),
+                -0.5em 1em rgba(233, 169, 32, 0.75);
+  }
+  100% {
+    box-shadow: 0.5em 1em rgba(61, 184, 143, 0.75),
+                -0.5em -1em rgba(233, 169, 32, 0.75);
+  }
+}
+
+
+
+  </style>
+</head>
+<body>
+  <header>
+    <img src="./img/logo.png" alt="Logo" class="logo" />
+    <h1>Hola, somos Apoyo</h1>
+    <h2>Psicológico.</h2>
+    <p>Un acompañamiento emocional y visual para quienes buscan superar la depresión. Recomendaciones, testimonios, recursos y más, todos diseñados para ayudarte.</p>
+
+    <div class="star star1">
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 66 66">
+        <path d="m28.1267 4.23225c1.1879-5.175299 8.5587-5.175287 9.7466.00001l3.7596 16.38014c.4287 1.8676 1.8871 3.326 3.7547 3.7547l16.3802 3.7596c5.1752 1.1879 5.1752 8.5587-.0001 9.7466l-16.3801 3.7596c-1.8676.4287-3.326 1.8871-3.7547 3.7547l-3.7596 16.3802c-1.1879 5.1752-8.5587 5.1752-9.7466-.0001l-3.7596-16.3801c-.4287-1.8676-1.8871-3.326-3.7547-3.7547l-16.38015-3.7596c-5.175299-1.1879-5.175287-8.5587.00001-9.7466l16.38014-3.7596c1.8676-.4287 3.326-1.8871 3.7547-3.7547z" fill="#fff"/>
+      </svg>
+    </div>
+    <div class="star star2">
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 66 66">
+        <path d="m28.1267 4.23225c1.1879-5.175299 8.5587-5.175287 9.7466.00001l3.7596 16.38014c.4287 1.8676 1.8871 3.326 3.7547 3.7547l16.3802 3.7596c5.1752 1.1879 5.1752 8.5587-.0001 9.7466l-16.3801 3.7596c-1.8676.4287-3.326 1.8871-3.7547 3.7547l-3.7596 16.3802c-1.1879 5.1752-8.5587 5.1752-9.7466-.0001l-3.7596-16.3801c-.4287-1.8676-1.8871-3.326-3.7547-3.7547l-16.38015-3.7596c-5.175299-1.1879-5.175287-8.5587.00001-9.7466l16.38014-3.7596c1.8676-.4287 3.326-1.8871 3.7547-3.7547z" fill="#fff"/>
+      </svg>
+    </div>
+  </header>
+<h2 class="titulo1">Como prevenir la depresión?</h2>
+  <section class="grid">
+    
+    <div class="card narrow">
+      <img src="https://images.unsplash.com/photo-1508780709619-79562169bc64?auto=format&fit=crop&w=800&h=600&q=80" alt="Esperanza" />
+      <div class="content">
+        <h2>Testimonio de superación</h2>
+        <p>"Volver a sonreír era algo que no creía posible. Hoy, lo hago todos los días."</p>
+      </div>
+    </div>
+
+    <div class="card wide">
+      <img src="https://plus.unsplash.com/premium_photo-1664378617213-55fc3392600d?q=80&w=870&auto=format&fit=crop&ixlib=rb-4.1.0" alt="Terapia" />
+      <div class="content">
+        <h2>Consejo útil</h2>
+        <p>Dedica 10 minutos diarios a escribir cómo te sientes. Ayuda más de lo que crees.</p>
+      </div>
+    </div>
+
+    <div class="card wide">
+      <img src="https://images.unsplash.com/photo-1545132059-a90e55c5286c?q=80&w=870&auto=format&fit=crop&ixlib=rb-4.1.0" alt="Música" />
+      <div class="content">
+        <h2>Música para relajarte</h2>
+        <p>Weightless - Marconi Union, ideal para calmar el sistema nervioso.</p>
+      </div>
+    </div>
+
+    <div class="card narrow">
+      <img src="https://images.unsplash.com/photo-1676282827732-106d93064103?q=80&w=870&auto=format&fit=crop&ixlib=rb-4.1.0" alt="Autocuidado" />
+      <div class="content">
+        <h2>Autocuidado diario</h2>
+        <p>Un baño tibio, una siesta breve o una charla honesta pueden ser suficientes.</p>
+      </div>
+    </div>
+  </section>
+  <!-- SECCIÓN: CAUSAS -->
+<section class="causas-section">
+  <h2>Causas de la depresión</h2>
+  <div class="causas-grid">
+    <div class="card-causa">
+      <img src="https://awenpsicologia.com/wp-content/uploads/Aislamiento-social.webp" alt="Aislamiento social">
+      <div class="card__content">
+        <p class="card__title">Aislamiento social</p>
+        <p class="card__description">La falta de conexión humana puede intensificar sentimientos de soledad y tristeza profunda.</p>
+      </div>
+    </div>
+
+    <div class="card-causa">
+      <img src="https://cdn.prod.website-files.com/5eb28ea668fa3d1be901d9d1/5eb28ea668fa3d1c5601e322_desansiedad-perdida-de-un-ser-querido.jpg" alt="Pérdida significativa">
+      <div class="card__content">
+        <p class="card__title">Pérdida significativa</p>
+        <p class="card__description">La muerte de un ser querido o la ruptura de una relación puede desencadenar episodios depresivos.</p>
+      </div>
+    </div>
+
+    <div class="card-causa">
+      <img src="https://neopraxis.mx/wp-content/uploads/2022/04/problemas-que-generan-estres-1024x1024.webp" alt="Estrés crónico">
+      <div class="card__content">
+        <p class="card__title">Estrés crónico</p>
+        <p class="card__description">Presión constante por estudios, trabajo o problemas personales afecta la salud mental.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+  
+
+<section class="consecuencias-wrapper" style="margin-top: -40px;">
+  <h1 class="spotify-title" style="font-family: var(--titleFont); color: #065f46; font-size: 4em; margin-left: 130px;">Consecuencias</h1>
+  
+  
+  <div class="consecuencias-grid">
+    <div class="consecuencias-cards" style="margin-left: 130px;">
+      
+      <div class="consecuencia-card consecuencia-red">
+        <p class="consecuencia-tip">Bajo rendimiento</p>
+        <p class="consecuencia-text">Dificultad para concentrarse y bajo desempeño académico o laboral.</p>
+      </div>
+      <div class="consecuencia-card consecuencia-blue">
+        <p class="consecuencia-tip">Problemas físicos</p>
+        <p class="consecuencia-text">Trastornos del sueño, fatiga constante, cambios de apetito.</p>
+      </div>
+      <div class="consecuencia-card consecuencia-green">
+        <p class="consecuencia-tip">Aislamiento social</p>
+        <p class="consecuencia-text">Alejamiento de amistades y pérdida de interés social.</p>
+      </div>
+    </div>
+
+    <div class="spotify-section" style="margin-right: 30px; margin-top: -180px;">
+      <h1 class="spotify-title" style="font-family: var(--titleFont); color: #065f46; font-size: 4em;">Música segun expertos</h1>
+      <div class="main">
+        <div class="currentplaying">
+          <svg height="50px" width="50px" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg" class="spotify"><radialGradient gradientUnits="userSpaceOnUse" gradientTransform="translate(0 -534)" r="43.888" cy="572.064" cx="33.34" id="ipdIa4~cOclR8yt_ClW93a"><stop stop-color="#f4e9c3" offset="0"></stop><stop stop-color="#f8eecd" offset=".219"></stop><stop stop-color="#fdf4dc" offset=".644"></stop><stop stop-color="#fff6e1" offset="1"></stop></radialGradient><path d="M51.03,37.34c0.16,0.98,1.08,1.66,2.08,1.66h5.39c2.63,0,4.75,2.28,4.48,4.96	C62.74,46.3,60.64,48,58.29,48H49c-1.22,0-2.18,1.08-1.97,2.34c0.16,0.98,1.08,1.66,2.08,1.66h8.39c1.24,0,2.37,0.5,3.18,1.32	C61.5,54.13,62,55.26,62,56.5c0,2.49-2.01,4.5-4.5,4.5h-49c-1.52,0-2.9-0.62-3.89-1.61C3.62,58.4,3,57.02,3,55.5	C3,52.46,5.46,50,8.5,50H14c1.22,0,2.18-1.08,1.97-2.34C15.81,46.68,14.89,44,13.89,44H5.5c-2.63,0-4.75-2.28-4.48-4.96	C1.26,36.7,3.36,35,5.71,35H8c1.71,0,3.09-1.43,3-3.16C10.91,30.22,9.45,29,7.83,29H4.5c-2.63,0-4.75-2.28-4.48-4.96	C0.26,21.7,2.37,20,4.71,20H20c0.83,0,1.58-0.34,2.12-0.88C22.66,18.58,23,17.83,23,17c0-1.66-1.34-3-3-3h-1.18	c-0.62-0.09-1.43,0-2.32,0h-9c-1.52,0-2.9-0.62-3.89-1.61S2,10.02,2,8.5C2,5.46,4.46,3,7.5,3h49c3.21,0,5.8,2.79,5.47,6.06	C61.68,11.92,60.11,14,57.24,14H52c-2.76,0-5,2.24-5,5c0,1.38,0.56,2.63,1.46,3.54C49.37,23.44,50.62,24,52,24h6.5	c3.21,0,5.8,2.79,5.47,6.06C63.68,32.92,61.11,35,58.24,35H53C51.78,35,50.82,36.08,51.03,37.34z" fill="url(#ipdIa4~cOclR8yt_ClW93a)"></path><linearGradient gradientUnits="userSpaceOnUse" gradientTransform="translate(0 -534)" y2="590.253" y1="530.096" x2="32" x1="32" id="ipdIa4~cOclR8yt_ClW93b"><stop stop-color="#42d778" offset="0"></stop><stop stop-color="#3dca76" offset=".428"></stop><stop stop-color="#34b171" offset="1"></stop></linearGradient><path d="M57,32c0,12.837-9.663,23.404-22.115,24.837C33.942,56.942,32.971,57,32,57	c-1.644,0-3.25-0.163-4.808-0.471C15.683,54.298,7,44.163,7,32C7,18.192,18.192,7,32,7S57,18.192,57,32z" fill="url(#ipdIa4~cOclR8yt_ClW93b)"></path><path d="M41.683,44.394c-0.365,0-0.731-0.181-1.096-0.365c-3.471-2.009-7.674-3.105-12.24-3.105	c-2.559,0-5.116,0.364-7.491,0.912c-0.365,0-0.914,0.183-1.096,0.183c-0.914,0-1.461-0.732-1.461-1.462	c0-0.913,0.547-1.463,1.279-1.643c2.923-0.732,5.846-1.096,8.951-1.096c5.116,0,9.866,1.276,13.885,3.655	c0.548,0.364,0.914,0.73,0.914,1.642C43.145,43.847,42.414,44.394,41.683,44.394z M44.241,38.181c-0.547,0-0.912-0.18-1.279-0.364	c-3.835-2.375-9.135-3.839-15.163-3.839c-2.924,0-5.664,0.366-7.674,0.916c-0.549,0.18-0.731,0.18-1.096,0.18	c-1.096,0-1.827-0.912-1.827-1.826c0-1.096,0.549-1.645,1.461-2.009c2.74-0.73,5.481-1.279,9.317-1.279	c6.213,0,12.241,1.463,16.991,4.384c0.73,0.364,1.096,1.096,1.096,1.826C46.069,37.269,45.337,38.181,44.241,38.181z M47.165,30.876	c-0.548,0-0.731-0.182-1.279-0.364c-4.385-2.559-10.961-4.021-17.356-4.021c-3.289,0-6.577,0.366-9.5,1.096	c-0.366,0-0.731,0.182-1.279,0.182c-1.279,0.183-2.193-0.912-2.193-2.192c0-1.279,0.731-2.009,1.644-2.192	c3.471-1.096,7.125-1.462,11.327-1.462c6.943,0,14.25,1.462,19.731,4.567c0.73,0.366,1.278,1.096,1.278,2.193	C49.357,29.961,48.442,30.876,47.165,30.876z" fill="#fff"></path></svg>
+          <p class="heading">Fuerza para Florecer</p>
+        </div>
+        <div class="loader" onclick="reproducirCancion()" name="reproducir">
+          <audio src="Queen  Dont Stop Me Now (Official Lyric Video).mp3" id="cancion"></audio>
+          <div class="song">
+            <p class="name1">Don’t Stop Me Now</p>
+            <p class="artist">Queen</p>
+          </div>
+          <img src="https://i.scdn.co/image/ab67616d0000b2730b7c95b538308aebf58cc4f6" alt="" class="albumcover">
+          <div class="loading">
+            <div class="load"></div><div class="load"></div><div class="load"></div><div class="load"></div>
+          </div>
+        </div>
+        <div class="loader" onclick="reproducirCancion2()" name="reproducir2">
+          <audio src="Pharrell Williams - Happy (Video).mp3" id="cancion2"></audio>
+          <div class="song">
+            <p class="name">Happy</p>
+            <p class="artist"> Pharrell Williams</p>
+          </div>
+          <img src="https://www.metalocus.es/sites/default/files/styles/mopis_news_carousel_item_desktop/public/metalocus_pharrellwilliams_01_1280.jpg?itok=yiEoIMsl" alt="" class="albumcover">
+          <div class="play"></div>
+        </div>
+        <div class="loader" onclick="reproducirCancion3()" name="reproducir3">
+          <audio src="Survivor - Eye Of The Tiger (Official HD Video).mp3" id="cancion3"></audio>
+          <div class="song">
+            <p class="name">Eye of the Tiger</p>
+            <p class="artist">Survivor</p>
+          </div>
+          <img src="https://is1-ssl.mzstatic.com/image/thumb/Music125/v4/f9/02/8f/f9028f63-7a55-235e-f789-1e8946430fa2/614223201122.jpg/600x600bf-60.jpg" alt="" class="albumcover">
+          <div class="play"></div>
+        </div>
+      </div>
+
+
+      <!-- From Uiverse.io by rmdhnkhsn --> 
+<div class="card1 sweeperCard o-hidden">
+  <div class="containers1">
+    <div class="icon1">
+      <svg
+        width="28"
+        height="29"
+        viewBox="0 0 28 29"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M23.7222 9.04435V6.71102C23.7222 5.42235 22.6775 4.37769 21.3888 4.37769L6.61106 4.37769C5.32239 4.37769 4.27773 5.42235 4.27773 6.71102V9.04435C4.27773 10.333 5.32239 11.3777 6.61106 11.3777H21.3888C22.6775 11.3777 23.7222 10.333 23.7222 9.04435Z"
+          stroke="#23C55E"
+          stroke-width="1.5"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        ></path>
+        <path
+          d="M23.7222 21.4888V19.1555C23.7222 17.8668 22.6775 16.8221 21.3888 16.8221H15.9444C14.6557 16.8221 13.6111 17.8668 13.6111 19.1555V21.4888C13.6111 22.7775 14.6557 23.8221 15.9444 23.8221H21.3888C22.6775 23.8221 23.7222 22.7775 23.7222 21.4888Z"
+          stroke="#23C55E"
+          stroke-width="1.5"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        ></path>
+      </svg>
+    </div>
+    <div class="title1 my-3">Expertos califican</div>
+    <div class="subtitle1">
+      La música tiene grandes incidencias en el comportamiento humano, después de todo, está plagada de sentimientos e intenciones que provienen de la creación artística más genuina del hombre
+    </div>
+    <a class="linkMore1 mt-3" href="https://ecoosfera.com/sci-innovacion/ciencia-mejores-canciones-para-subir-animo-formula-matematica/?utm_source=chatgpt.com" target="_blank" rel="noopener noreferrer">
+  Learn More
+  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 18 19" height="19" width="18">
+    <path stroke="#072713" fill="#072713" d="M3 9.09985C3 9.23792 2.88807 9.34985 2.75 9.34985C2.61193 9.34985 2.5 9.23792 2.5 9.09985C2.5 8.96178 2.61193 8.84985 2.75 8.84985C2.88807 8.84985 3 8.96178 3 9.09985Z"/>
+    <path stroke="#072713" fill="#072713" d="M9.25 2.84985C9.25 2.98792 9.13807 3.09985 9 3.09985C8.86193 3.09985 8.75 2.98792 8.75 2.84985C8.75 2.71178 8.86193 2.59985 9 2.59985C9.13807 2.59985 9.25 2.71178 9.25 2.84985Z"/>
+    <!-- (puedes mantener o simplificar más íconos según desees) -->
+  </svg>
+</a>
+
+  </div>
+</div>
+
+    </div>
+  </div>
+</section>
+
+<section class="hovercard-section">
+  <h2 class="hovercard-title">Testimonios reales</h2>
+  <div class="hovercard">
+    <p>
+      <span><strong>Nombre: Lesly  Edad: 17 </strong></span>
+      <span class="hovercard-info">
+        Sentía que todo lo que hacía estaba mal. Me comparaba con todos, y pensaba que no valía nada.
+        <br><br>
+        Pero un día mi mejor amiga me abrazó y me dijo que me extrañaba. Ese abrazo me hizo llorar, pero también me hizo dar cuenta de que no estaba sola.
+        <br><br>
+        Si tú estás pasando por algo parecido: no estás sol@. A veces el primer paso es hablar, aunque dé miedo.
+      </span>
+    </p>
+    <p>
+      <span><strong>Nombre: José  Edad: 20</strong></span>
+      <span class="hovercard-info">
+        Siempre hacía chistes, pero por dentro me sentía vacío. Dormía todo el día y dejé la universidad.
+        <br><br>
+        Hasta que un día, le conté a mi hermano. Él solo me escuchó. Eso fue el inicio. Fui a terapia y descubrí cosas de mí.
+        <br><br>
+        No estás roto, solo estás herido. Sanar es posible.
+      </span>
+    </p>
+    <p>
+      <span><strong>Nombre Sofía  Edad: 19</strong></span>
+      <span class="hovercard-info">
+        Me exigía ser la mejor. Sonreía, pero lloraba sin razón. Me dolía el cuerpo y nadie lo notaba.
+        <br><br>
+        Una profesora me dijo: “No tienes que cargar todo tú sola”. Fui a terapia y entendí que mi valor no depende de mis logros.
+        <br><br>
+        Si te sientes así, mereces apoyo. No estás exagerando. Tu dolor importa.
+      </span>
+    </p>
+  </div>
+</section>
+<section class="form-section">
+  <h2>Conócete mejor 💡</h2><div class="loader-spinner"></div>
+
+  <form id="personality-form">
+    <div class="form-group animate">
+      <label>¿Qué te gusta hacer en tu tiempo libre?</label>
+      <select name="hobby" required>
+        <option value="">Selecciona una opción</option>
+        <option value="creativo">Crear cosas (dibujar, escribir, diseñar)</option>
+        <option value="social">Salir con amigos o conocer gente nueva</option>
+        <option value="reflexivo">Leer, ver documentales, aprender cosas</option>
+        <option value="activo">Moverte, hacer deporte o explorar</option>
+      </select>
+    </div>
+
+    <div class="form-group animate">
+      <label>¿Dónde te sientes más cómodo?</label>
+      <select name="ambiente" required>
+        <option value="">Selecciona una opción</option>
+        <option value="tranquilo">En un lugar tranquilo y acogedor</option>
+        <option value="retador">En retos que me hacen crecer</option>
+        <option value="colaborativo">En ambientes donde colaboro con otros</option>
+        <option value="libre">En espacios donde soy libre de expresarme</option>
+      </select>
+    </div>
+
+    <div class="form-group animate">
+      <label>¿Cuál crees que es tu mayor fortaleza?</label>
+      <select name="fortaleza" required>
+        <option value="">Selecciona una opción</option>
+        <option value="empatia">Empatía y comprensión</option>
+        <option value="creatividad">Creatividad e imaginación</option>
+        <option value="resiliencia">Resiliencia y perseverancia</option>
+        <option value="liderazgo">Liderazgo e inspiración</option>
+      </select>
+    </div>
+
+    <button type="submit">Ver mi resultado 🌱</button>
+  </form>
+
+  <div id="resultado" class="resultado oculto"></div>
+</section>
+
+
+<section class="ayuda-section">
+  <h2>¿Necesitas ayuda?</h2>
+  <p>
+    El <strong>Ministerio de Salud (Minsa)</strong> ha habilitado líneas telefónicas de atención inmediata para casos de 
+    <strong>depresión, intentos de suicidio, angustia</strong> y otros problemas de salud mental, garantizando 
+    <strong>confidencialidad total</strong>.
+  </p>
+
+  <div class="ayuda-contacto">
+    <h3>➤ Infosalud – Minsa: <span>0800-10828</span></h3>
+    <p>
+      Servicio de Orientación y Consejería Telefónica en Salud que incluye un psicólogo especializado en salud mental, disponible para escuchar y brindar apoyo.
+    </p>
+
+    <h3>➤ Línea de emergencia – Instituto Nacional de Salud Mental:</h3>
+    <p><strong>Teléfono:</strong> <span>381-3695</span></p>
+    <p>
+      Consejería profesional para quienes enfrentan pensamientos suicidas u otros cuadros emocionales severos.
+    </p>
+  </div>
+</section>
+
+
+
+
+
+
+
+  
+
+  <footer>
+    <p>© 2025 Apoyo Psicológico | Hecho por MB | UCV</p>
+  </footer>
+</body>
+<script>
+  const form = document.getElementById("personality-form");
+  const resultado = document.getElementById("resultado");
+
+  form.addEventListener("submit", function (e) {
+    e.preventDefault();
+
+    const hobby = form.hobby.value;
+    const ambiente = form.ambiente.value;
+    const fortaleza = form.fortaleza.value;
+
+    let mensaje = "Eres una persona única, con habilidades que pueden marcar la diferencia. ";
+
+    if (fortaleza === "empatia") {
+      mensaje += "Tu capacidad de ponerte en el lugar de otros es una luz en este mundo. 🫂";
+    } else if (fortaleza === "creatividad") {
+      mensaje += "Tu imaginación puede transformar lo cotidiano en arte. 🎨";
+    } else if (fortaleza === "resiliencia") {
+      mensaje += "Tu fuerza interna te hace admirable. Has superado mucho. 💪";
+    } else if (fortaleza === "liderazgo") {
+      mensaje += "Tienes el poder de inspirar a otros a avanzar. 🌟";
+    }
+
+    mensaje += " Sigue cultivando lo que te hace especial. ¡Estamos orgullosos de ti!";
+
+    resultado.textContent = mensaje;
+    resultado.classList.remove("oculto");
+
+    resultado.scrollIntoView({ behavior: "smooth" });
+  });
+
+
+  function reproducirCancion() {
+    const audio = document.getElementById("cancion")
+    const div = document.getElementsByName("reproducir")
+
+    if (audio.paused) {
+      audio.currentTime = 3;
+      audio.play();
+      div.textContent = 'Pausar';
+    }else{
+      audio.pause();
+      div.textContent = 'Reproducir';
+    }
+  }
+
+  function reproducirCancion2() {
+    const audio = document.getElementById("cancion2")
+    const div = document.getElementsByName("reproducir2")
+
+    if (audio.paused) {
+      audio.currentTime = 5;
+      audio.play();
+      div.textContent = 'Pausar';
+    }else{
+      audio.pause();
+      div.textContent = 'Reproducir';
+    }
+  }
+
+  function reproducirCancion3() {
+    const audio = document.getElementById("cancion3")
+    const div = document.getElementsByName("reproducir3")
+
+    if (audio.paused) {
+      audio.currentTime = 3;
+      audio.play();
+      div.textContent = 'Pausar';
+    }else{
+      audio.pause();
+      div.textContent = 'Reproducir';
+    }
+  }
+</script>
+</html>
